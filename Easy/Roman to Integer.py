@@ -109,24 +109,20 @@ class SolutionTwo:
             100: 90,
             1000: 900
         }
-        idx_op = 0
+        sub_count = 0
         prev_num = None
         num = 0
         for idx, c in enumerate(s):
-            # print(c, idx, prev_num, num)
-            idx = idx - idx_op
+            idx = idx - sub_count
             if idx > 0:
-                # print(f"{prev_num} < {sym_map[c]}")
                 if prev_num < sym_map[c]:
-                    # print(prev_num)
                     num = num - prev_num + sub_map[sym_map[c]]
-                    idx_op += 1
+                    sub_count += 1
                 else:
                     num += sym_map[c]
             else:
                 num += sym_map[c]
             prev_num = sym_map[c]
-        # print(num)
         return num
 
 
